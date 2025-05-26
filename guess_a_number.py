@@ -2,11 +2,13 @@ import random
 
 computer_number = random.randint(1, 100)
 range_number = 100
-round = 1
+round_number = 1
 tries = 10
 
+print(f"Round {round_number}! You have {tries} tries!")
+
 while True:
-    player_input = input(f"Round {round}! {\n}You have {tries} tries! {\n}Guess the number (1-{range_number}): ")
+    player_input = input(f"Guess the number (1-{range_number}): ")
     if not player_input.isdigit():
         print("Invalid input. Try again...")
         continue
@@ -17,9 +19,10 @@ while True:
         print("You guessed right!")
         play_again = input("Type [yes] if you want to go to the NEXT ROUND. Else type [no].")
         if play_again == "yes":
-            round+=1
-            tries -=1
+            round_number+=1
+            tries = 10
             range_number+=100
+            print(f"Round {round_number}! You have {tries} tries!")
             continue
         break
     elif player_number < computer_number:
@@ -32,10 +35,11 @@ while True:
     if tries==1:
         print("One last try. Be careful!")
     elif tries==0:
-        print("You lost! {\n} Type [yes] if you want to PLAY AGAIN. Else type [no].")
+        play_again = input("You lost! Type [yes] if you want to PLAY AGAIN. Else type [no].")
         if play_again == "yes":
-            round = 1
+            round_number = 1
             tries = 10
             range_number = 100
+            print(f"Round {round_number}! You have {tries} tries!")
         else:
             break
